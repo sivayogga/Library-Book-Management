@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Book Management Quiz</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f3f4f6;
+      color: #1f2937;
+      padding: 30px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #1e3a8a;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .options button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #e5e7eb;
+      color: #1f2937;
+      transition: background 0.2s;
+    }
+
+    .options button:hover {
+      background-color: #3b82f6;
+      color: white;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: 600;
+      text-align: center;
+      color: #16a34a;
+    }
+
+    .wrong {
+      color: #dc2626;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Library Book Management Quiz</h2>
+
+    <div class="question">📚 Which of these is NOT a typical feature of a Library Management System?</div>
+    <div class="options">
+      <button onclick="checkAnswer(this, false)">Book catalog management</button>
+      <button onclick="checkAnswer(this, false)">Issue/Return tracking</button>
+      <button onclick="checkAnswer(this, true)">Space shuttle scheduling</button>
+      <button onclick="checkAnswer(this, false)">Member management</button>
+    </div>
+
+    <div class="question">🔎 What is important for efficient book search?</div>
+    <div class="options">
+      <button onclick="checkAnswer(this, false)">Only alphabetical list</button>
+      <button onclick="checkAnswer(this, true)">Advanced filters by title, author, or category</button>
+      <button onclick="checkAnswer(this, false)">Random browsing only</button>
+      <button onclick="checkAnswer(this, false)">Manual paper records</button>
+    </div>
+
+    <div class="question">💾 Best practice for data security in a Library System?</div>
+    <div class="options">
+      <button onclick="checkAnswer(this, true)">Role-based authentication and database backups</button>
+      <button onclick="checkAnswer(this, false)">Public access without login</button>
+      <button onclick="checkAnswer(this, false)">Storing passwords in plain text</button>
+      <button onclick="checkAnswer(this, false)">No security measures at all</button>
+    </div>
+
+    <div id="result" class="result"></div>
+  </div>
+
+  <script>
+    let score = 0;
+    let answered = 0;
+
+    function checkAnswer(button, correct) {
+      answered++;
+      if(correct){
+        button.style.backgroundColor = '#16a34a';
+        button.style.color = 'white';
+        score++;
+      } else {
+        button.style.backgroundColor = '#dc2626';
+        button.style.color = 'white';
+      }
+
+      // Disable all buttons for this question
+      let siblings = button.parentNode.querySelectorAll('button');
+      siblings.forEach(b => b.disabled = true);
+
+      // Show score when all questions answered
+      if(answered === 3){
+        document.getElementById('result').textContent = `Your Score: ${score}/3`;
+      }
+    }
+  </script>
+</body>
+</html>

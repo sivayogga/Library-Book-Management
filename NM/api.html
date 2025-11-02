@@ -1,0 +1,100 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Screenshots / API Documentation - Library Book Management</title>  
+  <style>  
+    body {  
+      font-family: Arial, sans-serif;  
+      background-color: #f9fafb;  
+      color: #333;  
+      padding: 20px;  
+    }  
+    h2 {  
+      color: #111827;  
+      text-align: center;  
+    }  
+    h3 {  
+      color: #1f2937;  
+      margin-top: 20px;  
+    }  
+    .screenshots {  
+      display: flex;  
+      gap: 10px;  
+      flex-wrap: wrap;  
+      justify-content: center;  
+    }  
+    .screenshots img {  
+      width: 200px;  
+      border-radius: 8px;  
+      border: 1px solid #ccc;  
+    }  
+    pre {  
+      background: #111827;  
+      color: #f3f4f6;  
+      padding: 10px;  
+      border-radius: 6px;  
+      overflow-x: auto;  
+    }  
+  </style>  
+</head>  
+<body>  
+
+  <h2>Screenshots / API Documentation</h2>  
+
+  <h3>App Screenshots</h3>  
+  <p>Below are a few screenshots of the <strong>Library Book Management System</strong>:</p>  
+
+  <div class="screenshots">  
+    <img src="login.png" alt="Login Page Screenshot">  
+    <img src="dashboard.png" alt="Dashboard Screenshot">  
+    <img src="booklist.png" alt="Book List Screenshot">  
+    <img src="addbook.png" alt="Add Book Page Screenshot">  
+    <img src="issuebook.png" alt="Issue/Return Page Screenshot">  
+  </div>  
+
+  <h3>API Documentation</h3>  
+  <p>This system uses a <strong>RESTful API</strong> to manage books, members, and issue/return records.</p>  
+
+  <pre>  
+// Fetch all books
+fetch('https://example.com/api/books')  
+  .then(response => response.json())  
+  .then(data => {  
+    console.log(data); // Displays list of all books  
+  });  
+
+// Add a new book
+fetch('https://example.com/api/books', {  
+  method: 'POST',  
+  headers: { 'Content-Type': 'application/json' },  
+  body: JSON.stringify({  
+    title: 'Data Structures',  
+    author: 'E. Balagurusamy',  
+    isbn: '9781234567890',  
+    category: 'Computer Science'  
+  })  
+})  
+  .then(response => response.json())  
+  .then(result => console.log('Book added:', result));  
+
+// Issue a book
+fetch('https://example.com/api/issue', {  
+  method: 'POST',  
+  headers: { 'Content-Type': 'application/json' },  
+  body: JSON.stringify({  
+    bookId: 101,  
+    memberId: 2001,  
+    issueDate: '2025-10-10',  
+    dueDate: '2025-10-20'  
+  })  
+})  
+  .then(response => response.json())  
+  .then(result => console.log('Book issued:', result));  
+  </pre>  
+
+  <p>The API handles operations like <strong>adding, editing, deleting, issuing, and returning books</strong>, ensuring real-time synchronization between the database and user interface.</p>  
+
+</body>  
+</html>  
